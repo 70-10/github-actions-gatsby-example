@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,13 +14,20 @@ jobs:
           - 12.x
     steps:
       - uses: actions/checkout@v1
-      - name: Run build with ${{ matrix.node-version }}
+      - name: Setup Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: install and build
         run: |
-          npm install
+          npm ci
           npm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2
