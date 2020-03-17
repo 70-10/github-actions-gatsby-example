@@ -1,2 +1,2 @@
 (window.webpackJsonp=window.webpackJsonp||[]).push([[2],{RXBc:function(n,e,t){"use strict";t.r(e);var a=t("q1tI"),c=t.n(a);e.default=function(){return c.a.createElement("div",null,c.a.createElement("p",null,"Github Actions Gatsby Example"))}}}]);
-//# sourceMappingURL=component---src-pages-index-js-5c134f19bd77d15e78b8.js.map
+//# sourceMappingURL=component---src-pages-index-js-5d72d56cf05b26abdee2.js.map
